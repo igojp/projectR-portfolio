@@ -32,6 +32,7 @@
         <li><a href="#building">建築</a></li>
         <li><a href="#modeling">モデリング</a></li>
         <li><a href="#system">システム制作</a></li>
+        <li><a href="#server">サーバー技術</a></li>
         <li><a href="#video">動画・Shorts</a></li>
         <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSeEgq_FgnhTnNj8QVx-PNUegwc1HQ8rBWg_GA0QLBKeUV4zPw/viewform" class="nav-cta" target="_blank">応募はこちら</a></li>
       </ul>
@@ -89,25 +90,6 @@
         それぞれの得意分野を活かしながらチームでひとつの世界を作り上げています。
       </p>
 
-      <div class="stats-grid">
-        <div class="stat-card">
-          <span class="stat-number">???</span>
-          <span class="stat-label">結成年数<br>（年）</span>
-        </div>
-        <div class="stat-card">
-          <span class="stat-number">???</span>
-          <span class="stat-label">現在の<br>メンバー数</span>
-        </div>
-        <div class="stat-card">
-          <span class="stat-number">00</span>
-          <span class="stat-label">公開した<br>建築物件数</span>
-        </div>
-        <div class="stat-card">
-          <span class="stat-number">00</span>
-          <span class="stat-label">公開動画<br>本数</span>
-        </div>
-      </div>
-
       <div class="feature-grid">
         <div class="feature-card">
           <span class="feature-icon">🏗️</span>
@@ -125,9 +107,14 @@
           <p>データパックやMODを用いて、オリジナルの機能・ミニゲームを開発しています。</p>
         </div>
         <div class="feature-card">
+          <span class="feature-icon">🖥️</span>
+          <h3>サーバー技術</h3>
+          <p>大規模サーバー運営経験を持つ裏方が、活動用サーバーの構築・安定運用を支えています。</p>
+        </div>
+        <div class="feature-card">
           <span class="feature-icon">🎬</span>
           <h3>動画編集</h3>
-          <p>実況動画からShorts動画まで、企画・撮影・編集をグループ運営者が手掛けています。</p>
+          <p>Shorts動画を中心に、企画・撮影・編集をグループ運営者が手掛けています。</p>
         </div>
       </div>
     </div>
@@ -324,49 +311,64 @@
   </section>
 
   <!-- ============================================
-     動画・Shortsセクション
+     サーバー技術セクション
      ============================================ -->
-  <section id="video" class="section">
+  <section id="server" class="section">
     <div class="container">
-      <p class="section-eyebrow">Video</p>
-      <h2 class="section-title">動画編集（実況動画・Shorts）</h2>
+      <p class="section-eyebrow">Server</p>
+      <h2 class="section-title">サーバー技術</h2>
       <p class="section-lead">
-        <!-- ▼動画セクションの説明文を編集してください -->
-        グループ運営者が編集を手掛けた実況動画・Shorts動画をご紹介します。
+        <!-- ▼サーバー技術セクションの説明文を編集してください -->
+        グループには大規模サーバー運営経験を持つ専任の裏方担当がおり、サバイバルサーバーやミニゲームサーバーなど、
+        活動の基盤となるMinecraftサーバーの構築・監視・安定運用を担っています。
       </p>
 
-      <h3 class="subsection-title">実況動画</h3>
-      <div class="video-grid">
+      <div class="server-grid">
 
-        <!-- 動画埋め込みカード：YouTubeのURLを差し替えるだけで表示されます -->
-        <div class="video-card">
-          <div class="video-embed">
-            <!-- ▼YouTube動画のiframeに差し替える場合の例：
-                 <iframe src="https://www.youtube.com/embed/動画ID" title="動画タイトル"
-                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                 allowfullscreen></iframe>
-                 差し替えたら下の media-placeholder divごと削除してください -->
-            <div class="media-placeholder">
-              <span>▶️</span>
-              <p>動画リンクを追加</p>
-            </div>
+        <!-- サーバーカード：1つ追加するごとにこの <article> ブロックをコピーしてください -->
+        <article class="server-card">
+          <div class="system-body">
+            <span class="tag tag-server">サバイバルサーバー</span>
+            <h3>サバイバルサーバー運営</h3>
+            <p>世界観に合わせたルール・経済システムのもと、長期的に安定稼働するサバイバルサーバーを運営しています。</p>
+            <a href="#" class="link-arrow">詳細を見る →</a>
           </div>
-          <p class="video-caption">動画タイトルをここに入力</p>
-        </div>
+        </article>
 
-        <div class="video-card">
-          <div class="video-embed">
-            <div class="media-placeholder">
-              <span>▶️</span>
-              <p>動画リンクを追加</p>
-            </div>
+        <article class="server-card">
+          <div class="system-body">
+            <span class="tag tag-server">ミニゲームサーバー</span>
+            <h3>ミニゲームサーバー運営</h3>
+            <p>オリジナル企画に合わせたミニゲームサーバーを構築し、イベント時の同時アクセスにも対応しています。</p>
+            <a href="#" class="link-arrow">詳細を見る →</a>
           </div>
-          <p class="video-caption">動画タイトルをここに入力</p>
-        </div>
+        </article>
+
+        <article class="server-card">
+          <div class="system-body">
+            <span class="tag tag-server">監視・保守</span>
+            <h3>サーバー監視・最適化</h3>
+            <p>大規模サーバー運営の経験を活かし、稼働監視・バックアップ体制・パフォーマンス最適化を行っています。</p>
+            <a href="#" class="link-arrow">詳細を見る →</a>
+          </div>
+        </article>
 
       </div>
+    </div>
+  </section>
 
-      <h3 class="subsection-title">Shorts動画</h3>
+  <!-- ============================================
+     動画・Shortsセクション
+     ============================================ -->
+  <section id="video" class="section section-soft">
+    <div class="container">
+      <p class="section-eyebrow">Video</p>
+      <h2 class="section-title">動画編集（Shorts）</h2>
+      <p class="section-lead">
+        <!-- ▼動画セクションの説明文を編集してください -->
+        グループ運営者が編集を手掛けたShorts動画をご紹介します。
+      </p>
+
       <div class="shorts-row">
 
         <!-- Shorts用の縦長カード -->
