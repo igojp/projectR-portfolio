@@ -594,6 +594,11 @@ h1, h2, h3, h4 {
   border: 0;
 }
 
+.overview-video {
+  max-width: 720px;
+  margin: 0 auto 48px;
+}
+
 .video-embed .media-placeholder {
   border-radius: var(--radius-md);
   border-color: #333;
