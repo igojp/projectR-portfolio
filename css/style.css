@@ -428,11 +428,13 @@ h1, h2, h3, h4 {
   background: var(--color-bg-soft);
 }
 
-.gallery-media img {
+.gallery-media img,
+.gallery-media video {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
+  background: #000;
 }
 
 .gallery-body {
@@ -686,7 +688,9 @@ h1, h2, h3, h4 {
 /* ============================================
    12. 画像拡大表示（ライトボックス）
    ============================================ */
-#building .gallery-media img {
+#building .gallery-media img,
+#modeling .gallery-media img,
+#system .gallery-media img {
   cursor: zoom-in;
 }
 
