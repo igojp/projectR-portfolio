@@ -131,7 +131,7 @@
       <p class="section-lead">
         <!-- ▼建築セクションの説明文を編集してください -->
         制作された建築物の一部をご紹介します。<br>
-        グループによる実際の建築物や雰囲気をご覧ください。<br>
+        グループによる実際の建築物や雰囲気をご覧ください。(クリックで拡大表示ができます)<br>
       </p>
 
       <div class="gallery-grid">
@@ -184,7 +184,7 @@
       <p class="section-lead">
         <!-- ▼モデリングセクションの説明文を編集してください -->
         アイテム、キャラクターの3Dモデル制作の実績です。<br>
-        BlockBenchを活用したアニメーション制作者も在籍。
+        BlockBenchを活用したアニメーション制作者も在籍。(クリックで拡大表示ができます)<br>
       </p>
 
       <div class="gallery-grid">
@@ -240,7 +240,7 @@
       <p class="section-lead">
         <!-- ▼システム制作セクションの説明文を編集してください -->
         オリジナルのゲームシステムを実現するデータパック・MOD開発の実績です。<br>
-        MOD開発者在籍、データパックは実際の企画で使用されます。<br>
+        MOD開発者在籍、データパックは実際の企画で使用されます。(クリックで拡大表示ができます)<br>
         使用ツール：Visual Studio Code, MCreator, Claude code
 
       </p>
@@ -412,6 +412,15 @@
   </div>
 </footer>
 
+<!-- ============================================
+   画像拡大表示（ライトボックス）
+   建築カードの画像クリックで拡大表示するための土台
+   ============================================ -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose" aria-label="拡大表示を閉じる">&times;</button>
+  <img src="" alt="" id="lightboxImg">
+</div>
+
 <script>
   // ハンバーガーメニューの開閉（スマホ表示用）
   const navToggle = document.getElementById('navToggle');
@@ -430,6 +439,46 @@
       navToggle.classList.remove('is-open');
       navToggle.setAttribute('aria-expanded', 'false');
     });
+  });
+
+  // 画像拡大表示（ライトボックス）：建築カードの画像をクリックすると拡大表示
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxClose = document.getElementById('lightboxClose');
+
+  function openLightbox(img) {
+    lightboxImg.src = img.src;
+    lightboxImg.alt = img.alt;
+    lightbox.classList.add('is-open');
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('is-open');
+    lightboxImg.src = '';
+  }
+
+  document.querySelectorAll('#building .gallery-media img').forEach(img => {
+    img.addEventListener('click', () => openLightbox(img));
+  });
+
+  document.querySelectorAll('#modeling .gallery-media img').forEach(img => {
+    img.addEventListener('click', () => openLightbox(img));
+  });
+
+  document.querySelectorAll('#system .gallery-media img').forEach(img => {
+    img.addEventListener('click', () => openLightbox(img));
+  });
+
+  lightboxClose.addEventListener('click', closeLightbox);
+
+  // 背景（画像以外の部分）をクリックしても閉じる
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  // Escキーでも閉じる
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeLightbox();
   });
 </script>
 
