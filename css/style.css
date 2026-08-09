@@ -96,6 +96,7 @@ h1, h2, h3, h4 {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 16px;
   height: 72px;
 }
 
@@ -106,6 +107,8 @@ h1, h2, h3, h4 {
   font-family: var(--font-heading);
   font-weight: 700;
   font-size: 1.25rem;
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .logo-mark {
@@ -119,13 +122,15 @@ h1, h2, h3, h4 {
 .main-nav ul {
   display: flex;
   align-items: center;
-  gap: 32px;
+  flex-wrap: nowrap;
+  gap: 28px;
 }
 
 .main-nav a {
   font-size: 0.95rem;
   font-weight: 500;
   color: var(--color-text);
+  white-space: nowrap;
   transition: color 0.2s ease;
 }
 
@@ -354,40 +359,11 @@ h1, h2, h3, h4 {
 }
 
 /* ============================================
-   6. 概要：統計・特徴カード
+   6. 概要：特徴カード
    ============================================ */
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  margin-bottom: 56px;
-}
-
-.stat-card {
-  background: var(--color-bg-card);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  padding: 28px 20px;
-  text-align: center;
-}
-
-.stat-number {
-  display: block;
-  font-family: var(--font-heading);
-  font-size: 2.2rem;
-  font-weight: 800;
-  color: var(--color-primary);
-  margin-bottom: 8px;
-}
-
-.stat-label {
-  font-size: 0.85rem;
-  color: var(--color-text-muted);
-}
-
 .feature-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
 }
 
@@ -430,6 +406,8 @@ h1, h2, h3, h4 {
 }
 
 .gallery-card {
+  display:flex;
+  flex-direction:column;
   background: var(--color-bg-card);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
@@ -443,7 +421,10 @@ h1, h2, h3, h4 {
 }
 
 .gallery-media {
+  width: 100%;
   aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-bottom: 1px solid var(--color-border);
   background: var(--color-bg-soft);
 }
 
@@ -451,6 +432,7 @@ h1, h2, h3, h4 {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
 
 .gallery-body {
@@ -513,16 +495,23 @@ h1, h2, h3, h4 {
   color: var(--color-accent);
 }
 
+.tag-server {
+  background: #fbf1de;
+  color: var(--color-gold);
+}
+
 /* ============================================
-   8. システム制作カード
+   8. システム制作カード／サーバー技術カード
    ============================================ */
-.system-grid {
+.system-grid,
+.server-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 28px;
 }
 
-.system-card {
+.system-card,
+.server-card {
   background: var(--color-bg-card);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
@@ -532,7 +521,8 @@ h1, h2, h3, h4 {
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.system-card:hover {
+.system-card:hover,
+.server-card:hover {
   transform: translateY(-6px);
   box-shadow: var(--shadow-md);
 }
@@ -694,13 +684,62 @@ h1, h2, h3, h4 {
 }
 
 /* ============================================
-   12. レスポンシブ対応
+   12. 画像拡大表示（ライトボックス）
    ============================================ */
-@media (max-width: 900px) {
-  :root {
-    --section-padding: 64px;
-  }
+#building .gallery-media img {
+  cursor: zoom-in;
+}
 
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  background: rgba(15, 20, 18, 0.88);
+  cursor: zoom-out;
+}
+
+.lightbox.is-open {
+  display: flex;
+}
+
+.lightbox img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  cursor: default;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.lightbox-close:hover {
+  background: rgba(255, 255, 255, 0.28);
+}
+
+/* ============================================
+   13. レスポンシブ対応
+   ============================================ */
+
+/* ヘッダー／ナビゲーション：項目数が多いため900pxより広い段階でハンバーガーメニューに切り替える */
+@media (max-width: 1100px) {
   .main-nav {
     position: absolute;
     top: 72px;
@@ -720,6 +759,7 @@ h1, h2, h3, h4 {
   .main-nav ul {
     flex-direction: column;
     align-items: flex-start;
+    flex-wrap: wrap;
     gap: 0;
     padding: 8px 24px 24px;
   }
@@ -742,14 +782,16 @@ h1, h2, h3, h4 {
   .nav-toggle {
     display: flex;
   }
+}
 
-  .stats-grid,
-  .feature-grid {
-    grid-template-columns: repeat(2, 1fr);
+@media (max-width: 900px) {
+  :root {
+    --section-padding: 64px;
   }
 
   .gallery-grid,
-  .system-grid {
+  .system-grid,
+  .server-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -763,10 +805,9 @@ h1, h2, h3, h4 {
 }
 
 @media (max-width: 560px) {
-  .stats-grid,
-  .feature-grid,
   .gallery-grid,
-  .system-grid {
+  .system-grid,
+  .server-grid {
     grid-template-columns: 1fr;
   }
 
